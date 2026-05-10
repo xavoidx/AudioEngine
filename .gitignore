@@ -1,0 +1,43 @@
+# Build Outputs
+
+*.o
+*.d
+*.obj
+*.so
+*.dylib
+*.a
+*.exe
+
+# Executables
+
+demo
+
+# Build Directories
+
+build/
+Debug/
+Release/
+out/
+bin/
+obj/
+
+# macOS junk
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cache/
+.clangd/
+
+imgui.ini
+*.wav
+*.log
+.env

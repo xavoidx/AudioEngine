@@ -1,0 +1,8 @@
+-FFT spectrum analyzer
+-FIR
+-Audio Engine graph print function
+
+Later:
+-qt GUI
+
+
