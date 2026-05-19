@@ -1,8 +1,8 @@
 //
 //  Created by Owen Roush on 6/2/25.
 //
-#include "ImPlot/implot-master/implot.h"
-#include "ImPlot/imgui-master/backends/imgui_impl_glfw.h"
+#include "implot.h"
+#include "imgui_impl_glfw.h"
 #include "imgui.h"
 #include "imgui_impl_opengl2.h"
 #include <GLFW/glfw3.h>

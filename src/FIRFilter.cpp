@@ -31,11 +31,11 @@ namespace AudioApp {
                 
                 /**
                  * [ n, n-3, n-2, n-1, n, n-3, n-2, n-1 ]
-                 *                 ^   ^
-                 *               curr read
+                 *   ^   ^
+                 * curr read
                  */
                 for( int k{}; k < N; ++k ) {
-                    acc += h_rev_[k] * currDelayLine[ currIdx + 1 + k];
+                    acc += h_rev_[k] * currDelayLine[ currIdx + 1 + k ];
                     
                 }
 

@@ -6,7 +6,8 @@ GLFW_PREFIX := /opt/homebrew/opt/glfw
 IMGUI_DIR := ImPlot/imgui-master
 IMPLOT_DIR := ImPlot/implot-master
 
-CXXFLAGS := -O3 -ggdb -std=c++23 -MMD \
+CXXFLAGS := -O2 -ggdb -std=c++23 -MMD \
+	-Iinclude \
 	-I$(PA_PREFIX)/include \
 	-I$(GLFW_PREFIX)/include \
 	-I$(IMGUI_DIR) \
@@ -17,10 +18,9 @@ LDFLAGS := -L$(PA_PREFIX)/lib -L$(GLFW_PREFIX)/lib
 
 
 EXCLUDE.cpp :=
-EXCLUDE.cpp += synth.cpp
-EXCLUDE.cpp += synth.hh
+EXCLUDE.cpp += src/synth.cpp
 
-SOURCES.cpp := $(filter-out $(EXCLUDE.cpp), $(wildcard *.cpp))
+SOURCES.cpp := $(filter-out $(EXCLUDE.cpp), $(wildcard src/*.cpp))
 OBJS.cpp := $(SOURCES.cpp:%.cpp=%.o)
 DEPS.cpp := $(SOURCES.cpp:%.cpp=%.d)
 
@@ -47,8 +47,7 @@ $(PROGRAM): $(OBJS.cpp) $(IMGUI_OBJS)
 
 .PHONY: clean
 clean:
-	rm -f *.o
+	rm -f src/*.o src/*.d
 	rm -f $(PROGRAM)
-	rm -f *.d
 	rm -f $(IMGUI_OBJS)
 	
