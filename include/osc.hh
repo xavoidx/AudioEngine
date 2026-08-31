@@ -1,5 +1,4 @@
 #include "portaudio.h"
-#include "processor.hh"
 #include "envelope.hh"
 #include "Node.hh"
 #include <cassert>
@@ -18,13 +17,11 @@ namespace AudioApp {
     public:
 
         WaveShape waveShape; 
-        
-
         Envelope envelope;
 
-        Oscillator( const SampleSettings* settings );
+        Oscillator();
         Oscillator( std::string name, int freq, double amplitude, 
-            WaveShape waveShape, const SampleSettings* settings );
+            WaveShape waveShape );
         
         void Process( const float* inputBuffer, float* outputBuffer, 
             std::size_t numFrames, std::size_t numChannels ) override; 
@@ -52,13 +49,14 @@ namespace AudioApp {
         int GetFreq() { return freq_; }
         void SetAmplitude( double AmplitudedB );
         double GetAmplitude();
+ 
+    protected:
+        void Prepare() override { envelope.settings = settings; }
 
     private:
-        
         int freq_; 
         double amplitude_; 
-        float state;
-
+        double state;
     };
 }
 

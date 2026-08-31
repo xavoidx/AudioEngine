@@ -1,4 +1,5 @@
 #include "Node.hh"
+#pragma once
 
 namespace AudioApp
 {   
@@ -14,7 +15,7 @@ namespace AudioApp
         
     private:
 
-        OutputNode ( const SampleSettings* settings_ ) : Node( settings_ ) {
+        OutputNode() {
             Node::name = "Output";
         };
 
@@ -28,7 +29,6 @@ namespace AudioApp
              * Sum all inputs together into this output node,
              * directly put it into outputBuffer_.
              */
-            currentIndegree = indegree;
             std::fill( outputBuffer_.begin(), outputBuffer_.end(), 0.0f );
             for( auto& input : inputs_ ) {
                 for( int i{}; i < outputBuffer_.size(); ++i ) {

@@ -1,17 +1,19 @@
-#pragma once
 #include <vector>
 #include <algorithm>
 #include <cstddef>
 #include <cstring>
+#ifdef __ARM_NEON
+#include <arm_neon.h>
+#endif
 #include "Node.hh"
+#pragma once
 
 namespace AudioApp {
 
     class FIRFilter : public Node {
     public:
         FIRFilter( std::string name,
-                   std::vector<float> coefficients,
-                   const SampleSettings* settings );
+                   std::vector<float> coefficients );
 
         void Process( const float* inputBuffer, float* outputBuffer,
                       std::size_t frameCount, std::size_t channelCount ) override;
@@ -23,6 +25,9 @@ namespace AudioApp {
         std::size_t GroupDelaySamples() const;
 
         std::size_t NumTaps() const { return h_.size(); }
+
+    protected:
+        void Prepare() override;
 
     private:
 

@@ -1,11 +1,10 @@
 #pragma once
 namespace AudioApp {
+    
     struct SampleSettings {
-
         int BufferSize; 
         int SampleRate; 
         int NumChannels;
-
     };
 
     struct AudioBuffer {
@@ -13,6 +12,5 @@ namespace AudioApp {
         float** inputBuffer;
         int frameCount;
         int numChannels;
-
     };
 }

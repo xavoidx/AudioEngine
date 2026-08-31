@@ -1,8 +1,8 @@
-#pragma once
 #include <vector>
 #include <string>
 #include "AudioTypes.hh"
 #include <iostream>
+#pragma once
 
 namespace AudioApp {
 
@@ -17,13 +17,7 @@ namespace AudioApp {
 
         std::string name; 
         virtual ~Node() = default;
-        Node( const SampleSettings* settings ) : settings(settings) {
-
-            inputBuffer_.resize( settings->BufferSize * settings->NumChannels, 0.0f );
-            outputBuffer_.resize( settings->BufferSize * settings->NumChannels, 0.0f );
-            auto x = settings->BufferSize;
-
-        };
+        Node() = default;
 
         virtual void Process( const float* inputBuffer, float* outputBuffer,
             std::size_t frameCount, std::size_t channelCount) = 0;
@@ -52,7 +46,8 @@ namespace AudioApp {
                 << "\n";
         }
     protected:
-        const SampleSettings* settings;
+        virtual void Prepare() {}
+        const SampleSettings* settings{};
         
     private:
 

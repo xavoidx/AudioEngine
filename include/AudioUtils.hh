@@ -1,4 +1,6 @@
 #include <cstddef>
+#pragma once
+
 namespace AudioApp {
     /**
          * PortAudio expects buffers to interleaved based on how many

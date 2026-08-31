@@ -8,14 +8,10 @@
 
 namespace AudioApp {
 
-    Oscillator::Oscillator( const SampleSettings* settings ) : freq_(440), state(0.0), amplitude_(1.0), waveShape(sine), Node( settings ) {
-        envelope.settings = settings;
+    Oscillator::Oscillator() : waveShape(sine), freq_(440), amplitude_(1.0), state(0.0) {}
 
-    }
-
-    Oscillator::Oscillator( std::string name, int freq, double amplitude, WaveShape waveShape, const SampleSettings* settings )
-        : freq_(freq), state(0.0), amplitude_(amplitude),  waveShape(waveShape), Node( settings ) {
-            envelope.settings = settings; 
+    Oscillator::Oscillator( std::string name, int freq, double amplitude, WaveShape waveShape )
+        : waveShape(waveShape), freq_(freq), amplitude_(amplitude), state(0.0) {
             this->name = name;
         }
 
@@ -71,7 +67,7 @@ namespace AudioApp {
     }
 
     void Oscillator::SetAmplitude( double AmplitudedB ) {
-        amplitude_ = __exp10( AmplitudedB / 20 );
+        amplitude_ = std::pow( AmplitudedB / 20, 10 );
     }
     double Oscillator::GetAmplitude() {
         return 20 * log10( amplitude_ );

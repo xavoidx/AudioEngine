@@ -1,8 +1,8 @@
-#pragma once
 #include "AudioTypes.hh"
-#include "processor.hh"
 #include <cmath>
 #include <algorithm>
+#pragma once
+
 namespace AudioApp {
 
     class Envelope { 
